@@ -1,11 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 import MyHeatmap from './Components/Map';
+import NiftyPEChart from './Components/NIfty_Pie_Chart';
+import Map_2 from './Components/Map_2';
+import Nifty_chart_2 from './Components/Nifty_chart_2';
+import Map_3 from './Components/Map_3';
+import Nifty_chart_3 from './Components/Nifty_Chart_3';
+
 
 function App() {
   return (
     <div className="App">
-      <MyHeatmap/>
+      <div className="my-heat-map"> <MyHeatmap/> </div>
+      <div className="my-heat-map">  <NiftyPEChart/> </div>
+      <div className="my-heat-map"> <Map_2/>  </div>
+      <div className="my-heat-map"> <Nifty_chart_2/> </div>
+      <div className="my-heat-map"><Map_3/></div>
+      <div className="my-heat-map"><Nifty_chart_3/></div>
+      
     </div>
   );
 }

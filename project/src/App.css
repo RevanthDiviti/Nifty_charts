@@ -1,4 +1,10 @@
-.App {
+
+.my-heat-map{
+  margin: 3% 0% 0% 0%;
+}
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
