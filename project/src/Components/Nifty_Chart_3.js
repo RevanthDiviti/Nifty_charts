@@ -80,7 +80,7 @@ class Nifty_chart_3 extends Component {
       width: "100%",
       height: "450px",
       margin: "auto",
-      background: "linear-gradient(to bottom, #F5DEB3, #FFFFFF)"
+      background: "linear-gradient(to bottom right, #F5DEB3, #FFFFFF)"
     };
 
     return (

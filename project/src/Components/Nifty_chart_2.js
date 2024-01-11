@@ -40,9 +40,9 @@ class Nifty_chart_2 extends Component {
       axisY: {
         stripLines: [
           {
-            startValue: 10,
-            endValue: 20,
-            color: "gray" // Gray color for the 10 to 20 range
+            startValue: 100,
+            endValue: 200,
+            backgroundColor: "gray" // Gray color for the 10 to 20 range
           },
           {
             startValue: 20,
