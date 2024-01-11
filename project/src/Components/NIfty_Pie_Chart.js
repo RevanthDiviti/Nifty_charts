@@ -1,4 +1,4 @@
-/* App.js */
+
 import React, { Component } from "react";
 import CanvasJSReact from '@canvasjs/react-stockcharts';
  
@@ -28,6 +28,7 @@ class Nifty_Pie_Chart extends Component {
       title:{
         text:"StockChart with Numeric Axis"
       },
+      backgroundColor: "#F5DEB3",
       animationEnabled: true,
       exportEnabled: true,
       charts: [{
