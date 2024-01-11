@@ -8,7 +8,7 @@ const generateData = () => {
   for (let i = 0; i < 30; i++) {
     const row = [];
     for (let j = 0; j < 12; j++) {
-      row.push((Math.random() * 3).toFixed(1)); // Generate random decimal values between 0 and 3.0
+      row.push(Math.floor(Math.random() * 4)); 
     }
     data.push(row);
   }
@@ -23,7 +23,7 @@ const months = [
 const xLabels = months;
 const yLabels = Array.from({ length: 30 }, (_, i) => `${100 + i}`);
 
-const Map_3 = () => {
+const MyHeatmap = () => {
   const [data, setData] = useState(generateData());
   const [sortOrder, setSortOrder] = useState({
     column: null,
@@ -41,6 +41,13 @@ const Map_3 = () => {
     });
 
     setData(sortedData);
+  };
+
+  const calculateCellHeight = (value) => {
+    const baseHeight = 20; 
+    const padding = 2; 
+    const dynamicHeight = baseHeight + 2 * (value.toString().length); 
+    return dynamicHeight + padding;
   };
 
   return (
@@ -61,22 +68,20 @@ const Map_3 = () => {
         data={data}
         xLabels={xLabels}
         yLabels={yLabels}
-        height={50}
+        height={20} 
         width={600}
         backgroundColor="#eeeeee"
         xLabelWidth={60}
-        cellStyle={(background, value, min, max, data, x, y) => {
-          const color = value < 1.5 ? `rgba(255, 0, 0, ${value / 1.5})` : `rgba(0, 128, 0, ${1 - (max - value) / (max - 1.5)})`;
-          return {
-            background: color,
-            fontSize: '11px',
-            border: '1px solid #ffffff',
-          };
-        }}
-        cellRender={(value) => value && `${parseFloat(value).toFixed(1)}`}
+        cellStyle={(background, value, min, max, data, x, y) => ({
+          background: value < 1.5 ? `rgba(255, 0, 0, ${value / 1.5})` : `rgba(0, 128, 0, ${1 - (max - value) / (max - 1.5)})`,
+          fontSize: '11px',
+          border: '1px solid #ffffff',
+          height: `${calculateCellHeight(value)}px`, 
+        })}
+        cellRender={(value) => value && `${value}`}
       />
     </div>
   );
 };
 
-export default Map_3;
+export default MyHeatmap;

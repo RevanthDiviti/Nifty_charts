@@ -11,7 +11,7 @@ class Nifty_chart_3 extends Component {
   }
 
   generateDataPoints(noOfDps) {
-    var xVal = 1, yVal1 = 10, yVal2 = 20; // Initial y-axis values
+    var xVal = 1, yVal1 = 10, yVal2 = 20; 
     var dps = [];
     for (var i = 0; i < noOfDps; i++) {
       yVal1 = yVal1 + Math.round(5 + Math.random() * (-5 - 5));
@@ -27,7 +27,7 @@ class Nifty_chart_3 extends Component {
       title: {
         text: "StockChart with Numeric Axis"
       },
-      backgroundColor: "#F5DEB3",
+      backgroundColor: "transparent", 
       animationEnabled: true,
       exportEnabled: true,
       axisX: {
@@ -38,30 +38,6 @@ class Nifty_chart_3 extends Component {
       },
       axisY: {
         stripLines: [
-          {
-            startValue: 10,
-            endValue: 20,
-            color: "rgba(255, 255, 255, 0.5)", // Space color between 0 to 10
-            lineDashType: "dash",
-          },
-          {
-            startValue: 20,
-            endValue: 30,
-            color: "rgba(255, 255, 255, 0.5)", // Space color between 10 to 20
-            lineDashType: "dash",
-          },
-          {
-            startValue: 30,
-            endValue: 40,
-            color: "rgba(255, 255, 255, 0.5)", // Space color between 20 to 30
-            lineDashType: "dash",
-          },
-          {
-            startValue: 40,
-            endValue: 50,
-            color: "rgba(255, 255, 255, 0.5)", // Space color between 30 to 40
-            lineDashType: "dash",
-          }
         ],
         ticks: {
           min: 0,
@@ -97,40 +73,20 @@ class Nifty_chart_3 extends Component {
         ]
       }],
       rangeSelector: {
-        inputFields: {
-          startValue: 4000,
-          endValue: 6000,
-          valueFormatString: "###0"
-        },
-        buttons: [{
-          label: "1000",
-          range: 1000,
-          rangeType: "number"
-        }, {
-          label: "2000",
-          range: 2000,
-          rangeType: "number"
-        }, {
-          label: "5000",
-          range: 5000,
-          rangeType: "number"
-        }, {
-          label: "All",
-          rangeType: "all"
-        }]
       }
     };
 
-    const containerProps = {
+    const containerStyle = {
       width: "100%",
       height: "450px",
-      margin: "auto"
+      margin: "auto",
+      background: "linear-gradient(to bottom, #F5DEB3, #FFFFFF)"
     };
 
     return (
       <div>
-        <div>
-          <CanvasJSStockChart containerProps={containerProps} options={options} />
+        <div style={containerStyle}>
+          <CanvasJSStockChart options={options} />
         </div>
       </div>
     );

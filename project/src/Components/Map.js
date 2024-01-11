@@ -1,5 +1,3 @@
-
-
 // Heatmap.js
 import React, { useState } from 'react';
 import Heatmap from 'react-heatmap-grid';
@@ -45,6 +43,13 @@ const MyHeatmap = () => {
     setData(sortedData);
   };
 
+  const calculateCellHeight = (value) => {
+    const baseHeight = 20; 
+    const padding = 2; 
+    const dynamicHeight = baseHeight + 2 * (value.toString().length); 
+    return dynamicHeight + padding;
+  };
+
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
@@ -63,7 +68,7 @@ const MyHeatmap = () => {
         data={data}
         xLabels={xLabels}
         yLabels={yLabels}
-        height={50}
+        height={20} 
         width={600}
         backgroundColor="#eeeeee"
         xLabelWidth={60}
@@ -71,6 +76,7 @@ const MyHeatmap = () => {
           background: value < 50 ? `rgba(255, 165, 0, ${value / 50})` : `rgba(0, 128, 0, ${1 - (max - value) / (max - 50)})`,
           fontSize: '11px',
           border: '1px solid #ffffff',
+          height: `${calculateCellHeight(value)}px`, 
         })}
         cellRender={(value) => value && `${value}`}
       />
@@ -79,4 +85,3 @@ const MyHeatmap = () => {
 };
 
 export default MyHeatmap;
-
