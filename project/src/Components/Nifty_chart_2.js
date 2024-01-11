@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import CanvasJSReact from '@canvasjs/react-stockcharts';
 
@@ -24,9 +23,13 @@ class Nifty_chart_2 extends Component {
   }
   
   render() {
+
     const options = {
       title: {
-        text: "StockChart with Numeric Axis"
+        text: "StockChart with Numeric Axis",
+        fontColor: "darkblue",
+        fontSize: 20,
+        fontFamily: "Arial, sans-serif"
       },
       backgroundColor: "#F5DEB3",
       animationEnabled: true,
@@ -35,34 +38,61 @@ class Nifty_chart_2 extends Component {
         crosshair: {
           enabled: true,
           snapToDataPoint: true
-        }
+        },
+        title: "X-Axis Title",
+        titleFontColor: "green",
+        titleFontSize: 14,
+        titleFontFamily: "Arial, sans-serif"
       },
       axisY: {
         stripLines: [
           {
-            startValue: 100,
+            startValue: -200,
+            endValue: -400,
+            backgroundColor: "lightgray"
+          },
+          {
+            startValue: -200,
+            endValue: 0,
+            color: "yellow",
+            backgroundColor: "orange" 
+          },
+          {
+            startValue: 0,
             endValue: 200,
-            backgroundColor: "gray" // Gray color for the 10 to 20 range
+            color: "orange",
+            backgroundColor: "purple" 
           },
           {
-            startValue: 20,
-            endValue: 30,
-            color: "yellow" // Yellow color for the 20 to 30 range
-          },
-          {
-            startValue: 30,
-            endValue: 40,
-            color: "orange" // Orange color for the 30 to 40 range
-          },
-          {
-            startValue: 40,
-            endValue: 50,
-            color: "red" // Red color for the 40 to 50 range
+            startValue: 200,
+            endValue: 400,
+            color: "red"
           }
         ],
-        crosshair: {
-          enabled: true,
-        }
+      },
+      axisY2: {
+        stripLines: [
+          {
+            startValue: -Infinity,
+            endValue: -200,
+            color: "rgba(255, 255, 255, 0.5)", // Light background color for the section below -200
+          },
+          {
+            startValue: -200,
+            endValue: 0,
+            color: "rgba(255, 255, 255, 0.3)", // Light background color for the section between -200 to 0
+          },
+          {
+            startValue: 0,
+            endValue: 200,
+            color: "rgba(255, 255, 255, 0.5)", // Light background color for the section between 0 to 200
+          },
+          {
+            startValue: 200,
+            endValue: Infinity,
+            color: "rgba(255, 255, 255, 0.3)", // Light background color for the section above 200
+          },
+        ],
       },
       charts: [{
         axisXType: "primary",
@@ -71,7 +101,7 @@ class Nifty_chart_2 extends Component {
           {
             type: "spline",
             name: "Nifty Line 1",
-            color: "blue",
+            color: "royalblue",
             showInLegend: true,
             legendText: "Nifty Line 1",
             dataPoints: this.generateDataPoints(10000).map(point => ({ x: point.x, y: point.y1 }))
@@ -85,14 +115,13 @@ class Nifty_chart_2 extends Component {
             dataPoints: this.generateDataPoints(10000).map(point => ({ x: point.x, y: point.y2 }))
           }
         ]
-      }],    
+      }],
       rangeSelector: {
         inputFields: {
           startValue: 4000,
           endValue: 6000,
           valueFormatString: "###0"
         },
-        
         buttons: [{
           label: "1000",
           range: 1000,
@@ -115,7 +144,10 @@ class Nifty_chart_2 extends Component {
     const containerProps = {
       width: "100%",
       height: "450px",
-      margin: "auto"
+      margin: "auto",
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)"
     };
 
     return (
